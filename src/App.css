@@ -7,7 +7,7 @@
 	overflow: hidden;
 }
 
-.game {
+.game-container {
 	width: 700px;
 	height: 700px;
 	position: relative;
@@ -68,9 +68,12 @@
 	position: absolute;
 	height: 480px;
 	width: 120px;
-	top: calc((1024px - 480px) / 2);
+	right: -500px;
+	top: calc((700px - 480px) / 2);
 	border-radius: 16px;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 }
 
 .score-card {
@@ -83,17 +86,34 @@
 	font-weight: bold;
 	color: black;
 	border-bottom: 2px solid black;
+	background-color: white;
+	animation: slide-in 0.3s ease-in-out;
 }
 
-.score-card-slide {
-	animation: score-slide-down 0.3s linear;
-}
-
-@keyframes score-slide-down {
+/* Animate new score sliding from top */
+@keyframes slide-in {
 	from {
-		transform: translate3d(0, -120px, 0);
+		transform: translateY(-120px);
+		opacity: 0;
 	}
 	to {
-		transform: translate3d(0, 0px, 0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* Animate the last score disappearing */
+.score-card.fade-out {
+	animation: fade-out 0.3s ease-in-out;
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(120px);
 	}
 }

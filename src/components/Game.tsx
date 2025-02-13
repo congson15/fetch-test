@@ -183,7 +183,7 @@ export default function Game() {
 					ballsRef.current = ballsRef.current.filter((b) => b.id !== ball.id);
 					setBalls([...ballsRef.current]);
 
-					setScores((prev) => [...prev, { ...floor, id: generateUniqueId() }]);
+					setScores((prev) => [{ ...floor, id: generateUniqueId() + Math.random() }, ...prev]);
 				}
 			});
 		};
