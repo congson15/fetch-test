@@ -30,7 +30,7 @@ export const Score = ({ scores }: TScoreProps) => {
 	}, [scores]);
 
 	return (
-		<div className={`score-stack ${scores.length ? "new-item" : ""}`}>
+		<div className={`score-list ${scores.length ? "new-item" : ""}`}>
 			{scoresToShow.map((data, index) => (
 				<ScoreCard key={data.id} score={data} shouldFadeOut={index === 3} />
 			))}
